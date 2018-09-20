@@ -6,7 +6,7 @@ from time import sleep
 
 s = SenseHat()
 w = (255,255,255)
-
+ct=0
 
 while True:
     r = randint(0,200)
@@ -20,7 +20,6 @@ while True:
     #90 = x-1
     #180 = y-1
     #270 = x1
-    
     
     image = [
         w,w,w,c,c,w,w,w,
@@ -44,28 +43,30 @@ while True:
     z=round(acc['z'])
     if orientation == 0:
         if y==1 and x==0 and z==0:
-            pass
+            ct+=1
         else:
-            s.show_message('you lost')
             break
     elif orientation == 90:
         if y==0 and x==-1 and z==0:
-            pass
+            ct+=1
         else:
-            s.show_message('you lost')
             break
     elif orientation == 180:
         if y==-1 and x==0 and z==0:
-            pass
+            ct+=1
         else:
-            s.show_message('you lost')
             break
     elif orientation == 270:
         if y==0 and x==1 and z==0:
-            pass
+            ct+=1
         else:
-            s.show_message('you lost')
             break
+    print(x,y,z)
+        
+ct = str(ct)
+s.show_message("you lost")
+print(ct)
+        
     
         
     
